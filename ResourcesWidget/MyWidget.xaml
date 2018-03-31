@@ -4,9 +4,9 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:ResourcesWidget" 
 		WindowStyle="None" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
-		 AllowsTransparency="True" MouseDown="Window_MouseDown" FontSize="20" Title="{Binding TaskBarTitle}"
+		AllowsTransparency="True" MouseDown="Window_MouseDown" FontSize="20" Title="{Binding TaskBarTitle}"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}" ShowInTaskbar="{Binding TaskbarIcon}"
-		Topmost="{Binding AlwaysOnTop,Mode=OneWay}" Icon="/Images/netfol.ico">
+		Loaded="Window_Loaded"  Topmost="{Binding AlwaysOnTop,Mode=OneWay}" Icon="/Images/netfol.ico">
 	<Window.Background>
 		<SolidColorBrush Opacity="{Binding WindowOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
 	</Window.Background>

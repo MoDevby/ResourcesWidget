@@ -265,6 +265,11 @@ namespace ResourcesWidget
 			InitializeCpuRam();
 		}
 
+		private void Window_Loaded(object sender, RoutedEventArgs e)
+		{
+			this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
+			this.Top = 0;
+		}
 
 		private void InitializeNetworkMeter()
 		{
@@ -335,7 +340,6 @@ namespace ResourcesWidget
 			CpuUsage = (decimal)cpuCounter.NextValue();
 			RamUsage = computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory;
 		}
-
 
 		private void UpdateColorsAndVis()
 		{
