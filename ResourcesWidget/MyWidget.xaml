@@ -6,103 +6,110 @@
 		WindowStyle="None" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
 		AllowsTransparency="True" MouseDown="Window_MouseDown" FontSize="20" Title="{Binding TaskBarTitle}"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}" ShowInTaskbar="{Binding TaskbarIcon}"
-		Loaded="Window_Loaded"  Topmost="{Binding AlwaysOnTop,Mode=OneWay}" Icon="/Images/netfol.ico">
+		Loaded="Window_Loaded" Topmost="{Binding AlwaysOnTop,Mode=OneWay}" Icon="/Images/netfol.ico" 
+		MinWidth="120" >
 	<Window.Background>
 		<SolidColorBrush Opacity="{Binding WindowOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
 	</Window.Background>
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="Auto"/>
-			<ColumnDefinition Width="Auto"/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-
-		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0">
+	
+	<DockPanel Margin="3,0">
+		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" DockPanel.Dock="Top">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition/>
 				<ColumnDefinition/>
+				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
-			<CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"  IsChecked="{Binding AlwaysOnTop}" Content="Always On Top"/>
-			<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Orientation="Horizontal">
-				<Button ToolTip="Settings" Click="Settings_Click"  BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-					<Image Source="/Images/SettingsIcon.png" Width="32"/>
-				</Button>
-				<Button  ToolTip="Close" Click="Close_Click"  BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-					<TextBlock  Text="X" FontWeight="Bold" Margin="4,1"/>
-				</Button>
-			</StackPanel>
+			<CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"  IsChecked="{Binding AlwaysOnTop}" ToolTip="Always On Top"
+					  HorizontalContentAlignment="Left"/>
+			<Button ToolTip="Settings" Click="Settings_Click" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" 
+					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalContentAlignment="Center">
+				<Image Source="/Images/SettingsIcon.png" Width="32"/>
+			</Button>
+			<Button  ToolTip="Close" Click="Close_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2"
+					 Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalContentAlignment="Right">
+				<TextBlock  Text="X" FontWeight="Bold" />
+			</Button>
 		</Grid>
+		<Separator HorizontalAlignment="Stretch" DockPanel.Dock="Top"/>
+		<Grid HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
 
-		<ComboBox HorizontalAlignment="Center" ItemsSource="{Binding Interfaces, Mode=OneTime}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedInterface}"
+
+			<ComboBox HorizontalAlignment="Center" ItemsSource="{Binding Interfaces, Mode=OneTime}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedInterface}"
 				   Visibility="{Binding InterfaceVisibility}"  Margin="5" Grid.Row="1" Grid.ColumnSpan="2"/>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="2" Text="IP Address :" Visibility="{Binding IpLableVisiblity}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="2" Text="IP Address :" Visibility="{Binding IpLableVisiblity}"
 					   Foreground="{Binding LableColor}"/>
-		<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="2" Text="{Binding Ip, Mode=OneWay}"
+			<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="2" Text="{Binding Ip, Mode=OneWay}"
 				  Foreground="{Binding IpColor,Mode=OneWay}"  Visibility="{Binding IpVisibility}"/>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="3" Text="Status :" Visibility="{Binding StatusLableVisiblity}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="3" Text="Status :" Visibility="{Binding StatusLableVisiblity}"
 					    Foreground="{Binding LableColor}"/>
-		<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1"  Grid.Row="3" Text="{Binding Status, Mode=OneWay}"
+			<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1"  Grid.Row="3" Text="{Binding Status, Mode=OneWay}"
 				   Foreground="{Binding StatusColor,Mode=OneWay}" Visibility="{Binding StatusVisibility}"/>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="4" Text="Received :" Visibility="{Binding ReceivedLableVisiblity}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="4" Text="Received :" Visibility="{Binding ReceivedLableVisiblity}"
 				 Foreground="{Binding LableColor}"/>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="4"
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="4"
 					Visibility="{Binding ReceivedVisibility}" >
-			<TextBlock  Text="{Binding ReceivedBytes, Mode=OneWay}" Foreground="{Binding ReceivedColor,Mode=OneWay}" Margin="0,0,5,0"/>
-			<TextBlock  Text="{Binding  ReceivedUnit, Mode=OneWay}" Foreground="{Binding ReceivedColor,Mode=OneWay}"/>
-		</StackPanel>
+				<TextBlock  Text="{Binding ReceivedBytes, Mode=OneWay}" Foreground="{Binding ReceivedColor,Mode=OneWay}" Margin="0,0,5,0"/>
+				<TextBlock  Text="{Binding  ReceivedUnit, Mode=OneWay}" Foreground="{Binding ReceivedColor,Mode=OneWay}"/>
+			</StackPanel>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="5" Text="Down Speed :" Visibility="{Binding DSpeedLableVisiblity}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="5" Text="Down Speed :" Visibility="{Binding DSpeedLableVisiblity}"
 					    Foreground="{Binding LableColor}"/>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="5"
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="5"
 					Visibility="{Binding DSpeedVisibility}" >
-			<TextBlock  Text="{Binding DSpeed, Mode=OneWay}" Foreground="{Binding DColor,Mode=OneWay}" Margin="0,0,5,0"/>
-			<TextBlock  Text="{Binding  DSpeedUnit, Mode=OneWay}" Foreground="{Binding DColor,Mode=OneWay}"/>
-		</StackPanel>
+				<TextBlock  Text="{Binding DSpeed, Mode=OneWay}" Foreground="{Binding DColor,Mode=OneWay}" Margin="0,0,5,0"/>
+				<TextBlock  Text="{Binding  DSpeedUnit, Mode=OneWay}" Foreground="{Binding DColor,Mode=OneWay}"/>
+			</StackPanel>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="6" Text="Sent :" Visibility="{Binding SentLableVisiblity}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="6" Text="Sent :" Visibility="{Binding SentLableVisiblity}"
 					    Foreground="{Binding LableColor}"/>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="6"
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="6"
 					Visibility="{Binding SentVisibility}" >
-			<TextBlock  Text="{Binding SentBytes, Mode=OneWay}" Foreground="{Binding SentColor,Mode=OneWay}" Margin="0,0,5,0"/>
-			<TextBlock  Text="{Binding  SentUnit, Mode=OneWay}" Foreground="{Binding SentColor,Mode=OneWay}"/>
-		</StackPanel>
+				<TextBlock  Text="{Binding SentBytes, Mode=OneWay}" Foreground="{Binding SentColor,Mode=OneWay}" Margin="0,0,5,0"/>
+				<TextBlock  Text="{Binding  SentUnit, Mode=OneWay}" Foreground="{Binding SentColor,Mode=OneWay}"/>
+			</StackPanel>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="7" Text="Up Speed :" Visibility="{Binding USpeedLableVisiblity}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="7" Text="Up Speed :" Visibility="{Binding USpeedLableVisiblity}"
 					    Foreground="{Binding LableColor}"/>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="7"
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="7"
 					Visibility="{Binding USpeedVisibility}" >
-			<TextBlock  Text="{Binding USpeed, Mode=OneWay}" Foreground="{Binding UColor,Mode=OneWay}" Margin="0,0,5,0"/>
-			<TextBlock  Text="{Binding  USpeedUnit, Mode=OneWay}" Foreground="{Binding UColor,Mode=OneWay}"/>
-		</StackPanel>
+				<TextBlock  Text="{Binding USpeed, Mode=OneWay}" Foreground="{Binding UColor,Mode=OneWay}" Margin="0,0,5,0"/>
+				<TextBlock  Text="{Binding  USpeedUnit, Mode=OneWay}" Foreground="{Binding UColor,Mode=OneWay}"/>
+			</StackPanel>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="8" Text="CPU :" Visibility="{Binding CPULabelVisibility}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="8" Text="CPU :" Visibility="{Binding CPULabelVisibility}"
 					    Foreground="{Binding LableColor}"/>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="8"
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="8"
 					Visibility="{Binding CpuVisibility}" >
-			<TextBlock  Text="{Binding CpuUsage, Mode=OneWay}" Foreground="{Binding CpuColor,Mode=OneWay}" Margin="0,0,5,0"/>
-			<TextBlock  Text="{Binding  CpuUnit, Mode=OneWay}" Foreground="{Binding CpuColor,Mode=OneWay}"/>
-		</StackPanel>
+				<TextBlock  Text="{Binding CpuUsage, Mode=OneWay}" Foreground="{Binding CpuColor,Mode=OneWay}" Margin="0,0,5,0"/>
+				<TextBlock  Text="{Binding  CpuUnit, Mode=OneWay}" Foreground="{Binding CpuColor,Mode=OneWay}"/>
+			</StackPanel>
 
-		<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="9" Text="Ram :" Visibility="{Binding RamLableVisiblity}"
+			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="9" Text="Ram :" Visibility="{Binding RamLableVisiblity}"
 					    Foreground="{Binding LableColor}"/>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="9"
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Grid.Column="1" Grid.Row="9"
 					Visibility="{Binding RamVisibility}" >
-			<TextBlock  Text="{Binding RamUsage, Mode=OneWay}" Foreground="{Binding RamColor,Mode=OneWay}" Margin="0,0,5,0"/>
-			<TextBlock  Text="{Binding  RamUnit, Mode=OneWay}" Foreground="{Binding RamColor,Mode=OneWay}"/>
-		</StackPanel>
-	</Grid>
+				<TextBlock  Text="{Binding RamUsage, Mode=OneWay}" Foreground="{Binding RamColor,Mode=OneWay}" Margin="0,0,5,0"/>
+				<TextBlock  Text="{Binding  RamUnit, Mode=OneWay}" Foreground="{Binding RamColor,Mode=OneWay}"/>
+			</StackPanel>
+		</Grid>
+	</DockPanel>
 </Window>
