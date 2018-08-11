@@ -15,7 +15,7 @@ namespace ResourcesWidget
 	public partial class MyWidget : Window, INotifyPropertyChanged
 	{
 		private NetworkInterface _selectedInterface;
-		private List<NetworkInterface> _interfaces = new List<NetworkInterface>();
+		private List<NetworkInterface> _interfaces;
 		private string _ip, _status, _type;
 		private decimal _dSpeed, _uSpeed, _receivedBytes, _sentBytes, _ramUsage, _cpuUsage;
 		System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -52,7 +52,7 @@ namespace ResourcesWidget
 					}
 
 					NetworkBandwidthCalculator(value);
-					dispatcherTimer.Start();
+					if (!dispatcherTimer.IsEnabled) dispatcherTimer.Start();
 				}
 				catch (Exception)
 				{
@@ -146,13 +146,13 @@ namespace ResourcesWidget
 				switch (Settings.Default.TaskbarTitle)
 				{
 					case "Downlad Speed":
-						return "DSpeed : " + DSpeed + " " + DSpeedUnit;
+						return $"DS: {DSpeed} {DSpeedUnit}";
 					case "Upload Speed":
-						return "USpeed : " + USpeed + " " + USpeedUnit;
+						return $"US: {USpeed} {USpeedUnit}";
 					case "CPU Usage":
-						return "CPU : " + CpuUsage + " " + CpuUnit;
+						return $"CPU: {CpuUsage} {CpuUnit}";
 					case "Ram Usage":
-						return "Ram : " + RamUsage + " " + RamUnit;
+						return $"Ram: {RamUsage} {RamUnit}";
 					default:
 						return "";
 				}
@@ -273,6 +273,7 @@ namespace ResourcesWidget
 
 		private void InitializeNetworkMeter()
 		{
+			_interfaces = new List<NetworkInterface>();
 			/// Detecting Network Adaptors Using 
 			List<NetworkInterface> nics = NetworkInterface.GetAllNetworkInterfaces().Where(network =>
 			  network.OperationalStatus == OperationalStatus.Up &&
@@ -289,6 +290,7 @@ namespace ResourcesWidget
 			//Set the selected interface to the first one
 			if (Interfaces.Count > 0)
 				SelectedInterface = Interfaces.First();
+			OnPropertyChanged("Interfaces");
 		}
 
 		private void InitializeCpuRam()
@@ -395,6 +397,7 @@ namespace ResourcesWidget
 			var settings = new SettingsWindow();
 			settings.ShowDialog();
 			UpdateColorsAndVis();
+			InitializeNetworkMeter();
 		}
 		private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{

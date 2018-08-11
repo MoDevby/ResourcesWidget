@@ -1,17 +1,16 @@
 ﻿<Window x:Class="ResourcesWidget.MyWidget"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:local="clr-namespace:ResourcesWidget" 
+		
 		WindowStyle="None" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
 		AllowsTransparency="True" MouseDown="Window_MouseDown" FontSize="20" Title="{Binding TaskBarTitle}"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}" ShowInTaskbar="{Binding TaskbarIcon}"
-		Loaded="Window_Loaded" Topmost="{Binding AlwaysOnTop,Mode=OneWay}" Icon="/Images/netfol.ico" 
+		Loaded="Window_Loaded" Topmost="{Binding AlwaysOnTop,Mode=OneWay}"
 		MinWidth="120" >
 	<Window.Background>
 		<SolidColorBrush Opacity="{Binding WindowOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
 	</Window.Background>
-	
+
 	<DockPanel Margin="3,0">
 		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" DockPanel.Dock="Top">
 			<Grid.ColumnDefinitions>
@@ -50,7 +49,7 @@
 			</Grid.RowDefinitions>
 
 
-			<ComboBox HorizontalAlignment="Center" ItemsSource="{Binding Interfaces, Mode=OneTime}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedInterface}"
+			<ComboBox HorizontalAlignment="Center" ItemsSource="{Binding Interfaces, Mode=OneWay}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedInterface}"
 				   Visibility="{Binding InterfaceVisibility}"  Margin="5" Grid.Row="1" Grid.ColumnSpan="2"/>
 
 			<TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="2" Text="IP Address :" Visibility="{Binding IpLableVisiblity}"

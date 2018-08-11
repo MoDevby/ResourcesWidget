@@ -37,8 +37,7 @@ namespace ResourcesWidget
 				return null;
 			};
 
-			Window main = new MyWidget();
-			main.Show();
+			new MyWidget().Show();
 		}
 	}
 }
