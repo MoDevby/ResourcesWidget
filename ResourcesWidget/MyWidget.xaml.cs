@@ -124,6 +124,7 @@ namespace ResourcesWidget
 
 		public double WindowOpacity
 		{ get { return Settings.Default.WindowOpacity; } }
+		public double HeaderOpacity { get { return WindowOpacity < 0.2 ? 0.2 : WindowOpacity; } }
 		public Color WindowColor
 		{ get { return Settings.Default.WindowColor; } }
 
@@ -343,9 +344,10 @@ namespace ResourcesWidget
 			RamUsage = computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory;
 		}
 
-		private void UpdateColorsAndVis()
+		private void UpdateProperties()
 		{
 			OnPropertyChanged("WindowOpacity");
+			OnPropertyChanged("HeaderOpacity");
 			OnPropertyChanged("WindowColor");
 			OnPropertyChanged("TaskbarIcon");
 
@@ -379,6 +381,8 @@ namespace ResourcesWidget
 			OnPropertyChanged("USpeedLableVisiblity");
 			OnPropertyChanged("CPULabelVisibility");
 			OnPropertyChanged("RamLableVisiblity");
+
+			OnPropertyChanged("SelectedInterface");
 		}
 		#endregion
 
@@ -396,8 +400,8 @@ namespace ResourcesWidget
 		{
 			var settings = new SettingsWindow();
 			settings.ShowDialog();
-			UpdateColorsAndVis();
 			InitializeNetworkMeter();
+			UpdateProperties();
 		}
 		private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{

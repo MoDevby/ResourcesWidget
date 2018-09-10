@@ -11,26 +11,29 @@
 		<SolidColorBrush Opacity="{Binding WindowOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
 	</Window.Background>
 
-	<DockPanel Margin="3,0">
+	<DockPanel>
 		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" DockPanel.Dock="Top">
+			<Grid.Background>
+				<SolidColorBrush Opacity="{Binding HeaderOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
+			</Grid.Background>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 			<CheckBox HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"  IsChecked="{Binding AlwaysOnTop}" ToolTip="Always On Top"
-					  HorizontalContentAlignment="Left"/>
+					  HorizontalContentAlignment="Left" Margin="3,0"/>
 			<Button ToolTip="Settings" Click="Settings_Click" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" 
-					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalContentAlignment="Center">
+					Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalContentAlignment="Center" Margin="3,0">
 				<Image Source="/Images/SettingsIcon.png" Width="32"/>
 			</Button>
 			<Button  ToolTip="Close" Click="Close_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2"
-					 Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalContentAlignment="Right">
+					 Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalContentAlignment="Right" Margin="3,0">
 				<TextBlock  Text="X" FontWeight="Bold" />
 			</Button>
 		</Grid>
 		<Separator HorizontalAlignment="Stretch" DockPanel.Dock="Top"/>
-		<Grid HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+		<Grid HorizontalAlignment="Center" DockPanel.Dock="Bottom" Margin="3,0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="Auto"/>
