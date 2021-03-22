@@ -1,10 +1,11 @@
 ﻿<Window x:Class="ResourcesWidget.SettingsWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 		Title="Settings" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
-		FontSize="20" Icon="/Images/SettingsIcon.png" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+		FontSize="20" Icon="/Images/SettingsIcon.png" DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        KeyDown="Window_KeyDown" WindowStyle="SingleBorderWindow" Closed="Window_Closed">
+   
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
@@ -78,6 +79,6 @@
 		<xctk:ColorPicker Grid.Column="1" Grid.Row="11" VerticalAlignment="Center" Margin="5" SelectedColor="{Binding Ram_ColorChanged}"/>
 
 		<Button Grid.Column="0" Grid.Row="12" VerticalAlignment="Center" Margin="5" Content="Reset Defaults" Click="ResetButton_Click"/>
-		<Button Grid.Column="1" Grid.Row="12" VerticalAlignment="Center" Margin="5" Content="Done" Click="DoneButton_Click"/>
+		<Button Grid.Column="1" Grid.Row="12" VerticalAlignment="Center" Margin="5" Content="Save" Click="SaveButton_Click" ToolTip="(Ctrl+S)"/>
 	</Grid>
 </Window>
