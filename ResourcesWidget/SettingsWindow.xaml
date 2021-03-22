@@ -37,7 +37,7 @@
 
 		<StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="5" Orientation="Horizontal">
 			<TextBlock Text="Window Opacity : "/>
-			<TextBox Text="{Binding WindowOpacity}" MinWidth="32"/>
+			<TextBox Text="{Binding WindowOpacity,UpdateSourceTrigger=PropertyChanged}" MinWidth="32"/>
 			<TextBlock Text="%"/>
 		</StackPanel>
 		<xctk:ColorPicker Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="5" SelectedColor="{Binding Window_Background_Color}"/>

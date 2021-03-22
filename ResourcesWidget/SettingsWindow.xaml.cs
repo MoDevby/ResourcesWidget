@@ -232,7 +232,7 @@ namespace ResourcesWidget
             Sent_ColorChanged = Colors.IndianRed;
             UpSpeed_ColorChanged = Colors.Red;
             CPU_ColorChanged = Colors.Blue;
-            Ram_ColorChanged = Colors.Blue;
+            Ram_ColorChanged = Colors.Orange;
 
             InterfaceSelection_Click = false;
             Lables_Click = true;
@@ -258,7 +258,6 @@ namespace ResourcesWidget
             else if (e.Key == Key.Escape)
                 Window_Closed(sender, e);
         }
-
         private void Window_Closed(object sender, System.EventArgs e)
         {
             Settings.Default.Reload();
