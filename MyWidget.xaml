@@ -53,7 +53,7 @@
         </StackPanel>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" DockPanel.Dock="Top">
             <Grid.Background>
-                <SolidColorBrush Opacity="{Binding HeaderOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
+                <SolidColorBrush Opacity="{Binding WindowOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
             </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

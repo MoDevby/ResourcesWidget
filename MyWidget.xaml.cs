@@ -124,7 +124,6 @@ namespace ResourcesWidget
 
         public double WindowOpacity
         { get { return Settings.Default.WindowOpacity < 0.01 ? 0.01 : Settings.Default.WindowOpacity; } }
-        public double HeaderOpacity { get { return WindowOpacity < 0.2 ? 0.2 : WindowOpacity; } }
         public Color WindowColor
         { get { return Settings.Default.WindowColor; } }
 
