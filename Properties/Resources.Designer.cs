@@ -59,5 +59,15 @@ namespace ResourcesWidget.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] DotNetProjects_Wpf_Extended_Toolkit {
+            get {
+                object obj = ResourceManager.GetObject("DotNetProjects_Wpf_Extended_Toolkit", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
