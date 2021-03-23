@@ -10,7 +10,7 @@ This widget can be dynamically customized to fit your needs, some of the options
 
 ## Installation
 This widget was test on both win 7 & 10.  
-It doesn't require installation just download ResourcesWidget.exe from release tab and start using it.
+This widget is portable and doesn't require installation just download the zip from release tab and use it, can also add to the startup folder if needed.
 
 ### This Project is using the following components from open source libraries:   
-ColorPicker from [Xceed.Wpf.Toolkit](https://github.com/xceedsoftware/wpftoolkit) under [MS-PL](https://github.com/xceedsoftware/wpftoolkit/blob/master/license.md) license.
+ColorPicker from [DotNetProjects.Wpf.Extended.Toolkit](https://github.com/dotnetprojects/WpfExtendedToolkit) under [MS-PL](https://github.com/dotnetprojects/WpfExtendedToolkit/blob/Extended/LICENSE.md) license.
