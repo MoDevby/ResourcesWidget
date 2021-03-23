@@ -158,7 +158,8 @@
     <Resource Include="Images\CloseIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\PinIcon.png" />
+    <Resource Include="Images\PinnedIcon.png" />
+    <Resource Include="Images\UnPinnedIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

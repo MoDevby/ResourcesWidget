@@ -9,6 +9,41 @@
     <Window.Background>
         <SolidColorBrush Opacity="{Binding WindowOpacity,Mode=OneWay}" Color="{Binding WindowColor,Mode=OneWay}"/>
     </Window.Background>
+    <Window.Resources>
+        <Image x:Key="PinnedIcon" Source="/Images/PinnedIcon.png" Width="25"/>
+        <Image x:Key="UnPinnedIcon" Source="/Images/UnPinnedIcon.png" Width="25"/>
+        <Style x:Key="ToggleButtonStyle"  TargetType="{x:Type ToggleButton}">
+            <Setter Property="Content" Value="{StaticResource UnPinnedIcon}" />
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content" Value="{StaticResource PinnedIcon}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="ToggleButtonControlTemplate" TargetType="{x:Type ToggleButton}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"
+                    Background="{Binding WindowColor,Mode=OneWay}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                  Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                  <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#80DADADA"/>
+                    <Setter Property="Background" TargetName="border" Value="#210080FF"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#90006CD9"/>
+                    <Setter Property="Background" TargetName="border" Value="#400080FF"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
 
     <DockPanel>
         <StackPanel Orientation="Vertical" DockPanel.Dock="Top" Margin="0,3" Width="64">
@@ -26,19 +61,19 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ToggleButton ToolTip="Always On Top" Grid.Column="0" IsChecked="{Binding AlwaysOnTop}" Height="38" MinWidth="32" Padding="5,2">
-                <Image Source="/Images/PinIcon.png" Width="25"/>
-            </ToggleButton>
+            <ToggleButton ToolTip="Always On Top" Grid.Column="0" IsChecked="{Binding AlwaysOnTop}" Height="38" MinWidth="30" Padding="5,2" 
+                          Style="{StaticResource ToggleButtonStyle}" Template="{StaticResource ToggleButtonControlTemplate}" />
+
             <Button ToolTip="Settings" Click="Settings_Click" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-                    Height="38" MinWidth="32" HorizontalAlignment="Stretch" Padding="5,2">
+                    Height="38" MinWidth="30" HorizontalAlignment="Stretch" Padding="5,2">
                 <Image Source="/Images/SettingsIcon.png"/>
             </Button>
             <Button ToolTip="Refresh Network Interfaces" Click="Refresh_Click" Grid.Column="2" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-                    Height="38" MinWidth="32" HorizontalAlignment="Stretch" Padding="5,2">
+                    Height="38" MinWidth="30" HorizontalAlignment="Stretch" Padding="5,2">
                 <Image Source="/Images/RefreshIcon.png"/>
             </Button>
             <Button ToolTip="Close" Click="Close_Click" Grid.Column="3" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
-                    Height="38" MinWidth="32" HorizontalAlignment="Stretch" Padding="5,2">
+                    Height="38" MinWidth="30" HorizontalAlignment="Stretch" Padding="5,2">
                 <Image Source="/Images/CloseIcon.png" Width="25"/>
             </Button>
         </Grid>
